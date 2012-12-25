@@ -24,7 +24,7 @@ Directives in testo_config.js
 How to commit tests result
 --------------------------
 
-Put on your tests page this code:
+Put this code on your tests page:
 
     <script src="testo_library.js">
         window.$testo_slave= $testo_slave
