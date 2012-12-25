@@ -3624,7 +3624,7 @@ if (typeof define === "function" && define.amd) {
 // ../lib/io/lib_io_.jam.js
 this.$lib_io= io;
 // ../testo/slave/testo_slave.jam.js
-void function( ){
+var $testo_slave= new function( ){
     var socket= $lib_io.connect( ':1351' )
     
     socket.on( 'connect', function( param ){
@@ -3634,7 +3634,12 @@ void function( ){
     socket.on( 'agent:run', function( param ){
         document.location= param.uri
     } )
-}( )
+    
+    this.done= function( passed ){
+        socket.emit( 'agent:done', { id: navigator.userAgent, state: passed } )
+    }
+
+}
 
         var scripts= document.getElementsByTagName( 'script' )
         var currentScript= document.currentScript || scripts[ scripts.length - 1 ]
