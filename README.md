@@ -30,4 +30,4 @@ Put on your tests page this code:
         window.$testo_slave= $testo_slave
     </script>
 
-Than call $test_slave.done( Boolean( passed ) ) when tests are completed.
+Than call `$test_slave.done( Boolean( passed ) )` when tests are completed.
