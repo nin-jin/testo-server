@@ -3640,4 +3640,4 @@ void function( ){
         var currentScript= document.currentScript || scripts[ scripts.length - 1 ]
         if( currentScript.src ) eval( currentScript.innerHTML )
     }
-}.call( Object.create( this ) )
+}( )

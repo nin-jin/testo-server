@@ -1,13 +1,9 @@
-var connect = require('connect')
+var config= require( './testo_config.js' )
 
-var server= connect.createServer( connect.static( __dirname ) ).listen( 1351 )
+var connect = require( 'connect' )
+var server= connect.createServer( connect.static( __dirname ) ).listen( config.port )
 var io= require( 'socket.io' ).listen( server )
-var fs= require('fs')
 
-var config= {
-    uri: 'http://hyoo.local/jin/-mix/dev.doc.xhtml?testo_session=',
-    timeout: 5000,
-}
 
 var agents= {}
 var states= {}
@@ -36,17 +32,12 @@ io.sockets.on( 'connection', function( socket ){
   
 } )
 
-var programFiles= process.env['ProgramFiles(x86)'] || process.env.ProgramFiles
-
-persistBrowser( programFiles + '/Mozilla Firefox/firefox.exe' )
-persistBrowser( programFiles + '/Opera/opera.exe' )
-persistBrowser( programFiles + '/Internet Explorer/iexplore.exe' )
-persistBrowser( programFiles + '/Google/Chrome/Application/chrome.exe' )
+void ( config.browsers || [] ).forEach( persistBrowser )
 
 function persistBrowser( path ){
     require( 'child_process' ).execFile
     (   path
-    ,   [ 'http://localhost:1351' ]
+    ,   [ 'http://' + config.host + ':' + config.port + '/testo_base.html' ]
     ,   {}
     ,   function( error, stdout, stderr ){
             onExit()
