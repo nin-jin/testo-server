@@ -19,3 +19,8 @@ Directives in testo_config.js
 **timeout** - timeout for all tests
 
 **browsers** - paths to your browsers
+
+
+How to commit tests result
+--------------------------
+
