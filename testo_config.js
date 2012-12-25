@@ -1,7 +1,7 @@
 var programFiles= process.env['ProgramFiles(x86)'] || process.env.ProgramFiles
 
 module.exports= {
-    uri: 'http://hyoo.local/jin/-mix/dev.doc.xhtml?testo_session={testo_session}',
+    uri: 'http://localhost:1351/testo_base.html?testo_session={testo_session}',
     timeout: 5000,
     browsers: [
         programFiles + '/Mozilla Firefox/firefox.exe',
