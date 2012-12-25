@@ -14,7 +14,7 @@ To run tests type in console:
 Directives in testo_config.js
 -----------------------------
 
-**uri** - uri of page that contains your tests. Atttach to that testo_library.js
+**uri** - uri of page that contains your tests.
 
 **timeout** - timeout for all tests
 
@@ -24,3 +24,10 @@ Directives in testo_config.js
 How to commit tests result
 --------------------------
 
+Put on your tests page this code:
+
+    <script src="testo_library.js">
+        window.$testo_slave= $testo_slave
+    </script>
+
+Than call $test_slave.done( Boolean( passed ) ) when tests are completed.
